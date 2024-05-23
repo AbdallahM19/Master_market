@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #081456, #1a2dff, #207dff);
+    color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #00000090;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+
+.logo img {
+    height: 35px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    align-items: center;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: #00000090;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero .button {
+    background: #ff4081;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.hero-image img {
+    max-width: 80%;
+    margin-left: 50px;
+    height: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: left;
+    background-color: #0b132b;
+    padding: 15px 0;
+    text-align: center;
+    position: relative;
+}
+
+footer .social-links {
+    display: flex;
+    justify-content: column;
+    align-items: left;
+    gap: 15px;
+    margin-right: 65%;
+}
+
+footer .social-links a.empty {
+    background-color: transparent;
+    width: 100px;
+    background-color: #333;
+    height: 40px;
+}
+
+footer .social-links a.facebook,
+footer .social-links a.youtube,
+footer .social-links a.twitter {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    background-color: #333;
+    transition: background-color 0.3s ease;
+}
+
+footer .social-links a.facebook:hover,
+footer .social-links a.youtube:hover,
+footer .social-links a.twitter:hover {
+    background-color: #555;
+}
+
+footer .social-links img {
+    width: 25px;
+    height: 25px;
+}

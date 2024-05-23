@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right top, #081456, #1a2dff, #207dff);
+    color: #000000;
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: center;
+}
+
+.login-container {
+    width: 350px;
+    padding: 16px;
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin: 10px 0 10px 0px;
+}
+
+.centered_gif {
+    display: block;
+    margin: auto auto 30px auto;
+    width: 250px;
+    height: auto;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 14px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+label[for="username"], label[for="password"] {
+    font-weight: bold;
+}
