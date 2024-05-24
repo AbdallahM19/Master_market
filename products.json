@@ -31,8 +31,7 @@
             "image4.jpg"
         ],
         "attributes": [
-            "color:white",
-            "black"
+            "color:white and black"
         ]
     },
     {
@@ -49,7 +48,8 @@
             "tshirt_back.jpg"
         ],
         "attributes": [
-            "color:white size:medium"
+            "color:white",
+            "size:medium"
         ]
     },
     {
@@ -66,7 +66,8 @@
             "runningshoes_top.jpg"
         ],
         "attributes": [
-            "color:black size:10"
+            "color:black",
+            "size:10"
         ]
     }
 ]

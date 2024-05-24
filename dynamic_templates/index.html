@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/style.css') }}">
+    <title>Master Market</title>
+</head>
+<body>
+    <h1>Welcome to Master Market</h1>
+    <button id="load-products">Load Products</button>
+    <ul id="products-list"></ul>
+
+    <script>
+        document.getElementById('load-products').addEventListener('click', () => {
+            fetch('/api/products')
+                .then(response => response.json())
+                .then(data => {
+                    const productsList = document.getElementById('products-list');
+                    productsList.innerHTML = '';
+                    data.forEach(product => {
+                        const li = document.createElement('li');
+                        li.textContent = `${product.name} - ${product.price} ${product.currency}`;
+                        productsList.appendChild(li);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

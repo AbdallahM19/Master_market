@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right top, #081456, #1a2dff, #207dff);
+    background: linear-gradient(to right top, #0059ff, #4978f9, #ffffff);
     color: #000000;
     margin: 0;
     position: relative;
@@ -82,7 +82,6 @@ section .search_box {
     position: relative;
     padding: 10px;
     font-size: 20px;
-    font-weight: bold;
     border: 5px solid #0d6007;
     border-radius: 50px;
     width: 800px;
@@ -118,7 +117,7 @@ section .search_box {
 }
 
 .button_search:hover {
-    background-color: #0d6007;
+    background-color: #56c14e;
 }
 
 .some_products {
@@ -150,17 +149,19 @@ section.information {
 }
 
 .products_display {
-    background: linear-gradient(to right top, #1fb011, #84e311, #f0c904);
+    background: #ded4d4;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     margin: 75px 40px 50px 100px;
     padding: 20px;
+    border: 3px solid #000000;
+    border-radius: 25px;
     width: 600px;
     height: auto;
     box-sizing: border-box;
-    outline: 3px solid #1fb011;
+    outline: 3px solid #000000;
     outline-offset: 50px;
 }
 
@@ -169,7 +170,7 @@ section.information {
     height: auto;
     border-top: 2px solid #ffffff;
     border-bottom: 2px solid #ffffff;
-    border-radius: 10px;
+    border-radius: 25px;
 }
 
 .product_name {
@@ -184,7 +185,11 @@ section.information {
     margin-bottom: 10px;
     margin-left: 10px;
     border: 3px solid #ffffff;
+    font-weight: bold;
     padding: 10px;
+    padding-left: 20px;
+    border-radius: 25px;
+    background: linear-gradient(to right top, #1fb011, #84e311, #f0c904);
 }
 
 .product_price,
@@ -196,14 +201,19 @@ section.information {
     margin-bottom: 10px;
     margin-left: 10px;
     border: 3px solid #ffffff;
+    font-weight: bold;
     padding: 10px;
+    padding-left: 20px;
+    border-radius: 25px;
     height: auto;
+    background: linear-gradient(to right top, #1fb011, #84e311, #f0c904);
 }
 
 .product_attributes {
     padding: auto;
     margin-block-end: auto;
     margin-top: auto;
+    border-radius: 5px;
     height: auto;
 }
 
@@ -226,19 +236,21 @@ section.information button{
     align-items: center;
     font-size: 18px;
     font-weight: bold;
-    background-color: #ff7300;
+    border: 5px solid #0048ff;
+    background-color: #0062ff;
     color: #FFFFFF;
     height: 50px;
     width: 80%;
-    border: none;
     border-radius: 5px;
     margin: 15px auto;
 }
 
 section.information button:hover {
     opacity: 0.8;
-    border: 5px solid #0048ff;
-    background-color: #0062ff;
+    /* border: 5px solid #d55500; */
+    /* background-color: #ff7300; */
+    border: 5px solid #2261ff;
+    background-color: #3682fd;
     opacity: 0.9;
 }
 
