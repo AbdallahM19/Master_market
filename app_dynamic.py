@@ -38,7 +38,6 @@ def home():
     cursor.close()
     db.close()
     attributes_dict = transform_attributes(products)
-    print("Attributes Dict:", attributes_dict)
     return render_template(
         'master_market.html',
         products=products,

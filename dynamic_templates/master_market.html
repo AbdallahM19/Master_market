@@ -32,7 +32,23 @@
             <article class="products_display">
                 <h2 class="product_name">{{ i['name'] }}</h2>
                 <div class="product_images">
-                    <img src="../images/laptop.png" alt="laptop photo">
+                    <div class="main_photo">
+                        <img src="../images/laptop.png" alt="laptop photo">
+                    </div>
+                    <div class="more_imgs">
+                        <div class="thumb">
+                            <img src="../images/135053.gif" alt="thumbnail photo">
+                        </div>
+                        <div class="thumb">
+                            <img src="../images/MV5BNjZlNGE3NjktZDkxNy00ZGQ1LTlkYzctY2U2NTYyZTY1MjliXkEyXkFqcGdeQXVyNDQxNjcxNQ@@._V1_.jpg" alt="thumbnail photo">
+                        </div>
+                        <div class="thumb last_img">
+                            <img src="../images/download.gif" alt="thumbnail photo">
+                            <button class="overlay_button">
+                                <h1>+4</h1>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <p class="product_description">Description: {{ i['description'] }}</p>
                 <p class="product_price">Price: {{ i['price'] }} {{ i['currency'] }}</p>
