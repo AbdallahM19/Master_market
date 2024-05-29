@@ -45,6 +45,7 @@ nav a {
     align-items: center;
     padding: 50px;
     background: #00000090;
+    padding-bottom: 15px;
 }
 
 .hero-content {
@@ -70,19 +71,48 @@ nav a {
     border-radius: 5px;
 }
 
+
 .hero-image img {
     max-width: 80%;
     margin-left: 50px;
     height: auto;
 }
 
-footer {
-    display: flex;
-    justify-content: left;
-    background-color: #0b132b;
-    padding: 15px 0;
-    text-align: center;
+.hero .sign_log {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sign_log {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 20px;
+    padding-left: 50px;
+    gap: 15px;
+    background: #00000090;
+}
+
+.sign_log button {
+    background: #ff4081;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #0b132b;
+    width: 100%;
+    padding: 15px 0;
 }
 
 footer .social-links {

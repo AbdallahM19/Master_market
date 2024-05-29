@@ -8,12 +8,13 @@ body {
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 183px;
 }
 
 header {
     height: 110px;
     border-bottom: 2px solid #ffffff;
-    background-image: url('../images/d7awx8y-abf2894e-c4ae-401d-9f7a-36367c73427a.gif');
+    background-image: url('../static/images/past.gif');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -31,7 +32,14 @@ header .logo {
     float: left;
 }
 
-.logo img {
+header .logo button {
+    border: none;
+    background: none;
+    height: 100px;
+    width: 70px;
+}
+
+header .logo img {
     position: relative;
     height: 44px;
 }
@@ -172,22 +180,6 @@ section.information {
     margin-bottom: 15px;
 }
 
-.product_images img,
-.product_images .main_photo img {
-    width: 100%;
-    height: auto;
-    border-top: 2px solid #ffffff;
-    border-bottom: 2px solid #ffffff;
-    border-radius: 25px;
-}
-
-.product_images {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
 .more_imgs {
     display: flex;
     justify-content: space-between;
@@ -197,6 +189,15 @@ section.information {
     border-bottom: 2px solid #ffffff;
     height: auto;
     padding: 15px;
+}
+
+.product_images img,
+.product_images .main_photo img {
+    width: 100%;
+    height: auto;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    border-radius: 25px;
 }
 
 .more_imgs .thumb {
@@ -339,15 +340,12 @@ section.information button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
     cursor: pointer;
     height: 50px;
     width: 15%;
     margin: 15px auto;
     border-radius: 5px;
-    background-color: #ff7300;
     border: none;
-    color: #FFFFFF;
 }
 
 .favorite img {
@@ -355,17 +353,32 @@ section.information button:hover {
     height: 30px;
 }
 
+.favorite.active,
+.favorite.active:hover {
+    border: 5px solid #cb630f;
+    background-color: #ffb700;
+}
+
+.favorite.active img {
+    filter: brightness(100%) saturate(100%) invert(84%) sepia(12%) saturate(0%) hue-rotate(10deg) brightness(0%) contrast(100%);
+}
+
 footer {
-    position: relative;
+    position: fixed;
     display: flex;
+    bottom: 0;
+    right: 0;
+    left: 0;
     justify-content: center;
+    width: 100%;
+    height: auto;
     font-size: 18px;
     font-weight: bold;
     color: #FFFFFF;
     border-top: 2px solid #ffffff;
     border-radius: 5px;
     padding-top: 20px;
-    background-image: url('../images/d7awx8y-abf2894e-c4ae-401d-9f7a-36367c73427a.gif');
+    background-image: url('../static/images/past.gif');
     background-repeat: no-repeat;
     background-size: cover;
 }

@@ -15,6 +15,14 @@ def transform_attributes(products):
     return attributes_dict
 
 
+def transform_images(products):
+    images_dict = {}
+    for product in products:
+        images_list = product['images'].split(', ') if 'images' in product else []
+        images_dict[product['product_id']] = images_list
+    return images_dict
+
+
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -24,12 +32,12 @@ def get_db_connection():
     )
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index():
     return render_template('index.html')
 
 
-@app.route('/home')
+@app.route('/home', strict_slashes=False)
 def home():
     db = get_db_connection()
     cursor = db.cursor(dictionary=True)
@@ -38,19 +46,25 @@ def home():
     cursor.close()
     db.close()
     attributes_dict = transform_attributes(products)
+    images_dict = transform_images(products)
     return render_template(
         'master_market.html',
         products=products,
-        attributes_dict=attributes_dict
+        attributes_dict=attributes_dict,
+        images_dict=images_dict
     )
 
 
-@app.route('/mastermarket')
+@app.route('/mastermarket', strict_slashes=False)
+@app.route('/templates/home.html', strict_slashes=False)
+@app.route('/dynamic_templates/home.html', strict_slashes=False)
 def mastermarket():
     return render_template('home.html')
 
 
-@app.route('/login')
+@app.route('/login', strict_slashes=False)
+@app.route('/templates/login.html', strict_slashes=False)
+@app.route('/dynamic_templates/login.html', strict_slashes=False)
 def login():
     return render_template('login.html')
 

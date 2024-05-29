@@ -9,8 +9,7 @@
         "category": "Electronics",
         "brand": "BrandZ",
         "images": [
-            "image1.jpg",
-            "image2.jpg"
+            "laptop.png"
         ],
         "attributes": [
             "color:black",
@@ -27,11 +26,26 @@
         "category": "Electronics",
         "brand": "BrandX",
         "images": [
-            "image3.jpg",
-            "image4.jpg"
+            "mobile_notch.png"
         ],
         "attributes": [
             "color:white and black"
+        ]
+    },
+    {
+        "product_id": "d18fb79f-0589-33a5-1524-9b829ed66f9b",
+        "name": "pc",
+        "description": "A PC",
+        "price": 899.99,
+        "currency": "USD",
+        "stock": 15,
+        "category": "Electronics",
+        "brand": "BrandZ",
+        "images": [
+            "interface.gif"
+        ],
+        "attributes": [
+            "Size: Full Size"
         ]
     },
     {
@@ -44,8 +58,7 @@
         "category": "Apparel",
         "brand": "XYZ",
         "images": [
-            "tshirt_front.jpg",
-            "tshirt_back.jpg"
+            "tshirt.gif"
         ],
         "attributes": [
             "color:white",
@@ -62,12 +75,52 @@
         "category": "Footwear",
         "brand": "ABC",
         "images": [
-            "runningshoes_side.jpg",
-            "runningshoes_top.jpg"
+            "shoes_1.png",
+            "shoes_2.png",
+            "shoes_3.png",
+            "shoes_4.png"
         ],
         "attributes": [
             "color:black",
             "size:10"
+        ]
+    },
+    {
+        "product_id": "e323afb6-aso8-4e80-beb0-5a1d416c98b0",
+        "name": "Glasses",
+        "description": "party glasses",
+        "price": 132.49,
+        "currency": "USD",
+        "stock": 21,
+        "category": "T-shirts",
+        "brand": "Golden Goose Style",
+        "images": [
+            "party-glasses.gif"
+        ],
+        "attributes": [
+            "color:white",
+            "size:medium"
+        ]
+    },
+    {
+        "product_id": "d18fb79f-8469-33a5-1524-9b829ed66f9b",
+        "name": "Video",
+        "description": "Film X-Men and Login",
+        "price": 20.99,
+        "currency": "USD",
+        "stock": 67,
+        "category": "Film",
+        "brand": "Video",
+        "images": [
+            "video.gif",
+            "135053.gif",
+            "logan_smile.jpg",
+            "download.gif",
+            "images_2.png"
+        ],
+        "attributes": [
+            "Size: Full Size",
+            "quality: 4K, 2K, 1080p"
         ]
     }
 ]

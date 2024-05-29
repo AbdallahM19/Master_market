@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Market</title>
-    <link rel="icon" href="../images/ai.png" type="img">
+    <link rel="icon" href="../static/images/ai.png" type="img">
     <link rel="stylesheet" href="../static/master_market.css">
+    <script src="../static/search.js" defer></script>
+    <script src="../static/star_button.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="../images/ai.png" type="logo">
+            <a href="../dynamic_templates/home.html">
+                <button>
+                    <img src="../static/images/ai.png" type="logo">
+                </button>
+            </a>
         </div>
         <div  class="profile">
-            <img src="../images/d7awx8y-abf2894e-c4ae-401d-9f7a-36367c73427a.gif"
+            <img src="../static/images/past.gif"
         </div>
     </header>
     <section>
         <div class="search_box">
             <input type="text" id="searchInput" placeholder="Search">
             <button class="button_search">
-                <img src="../images/search_icon.png" alt="search button">
+                <img src="../static/images/search_icon.png" alt="search button">
             </button>
         </div>
         <div class="some_products">
@@ -31,25 +37,33 @@
         {% for i in products|sort(attribute='name') %}
             <article class="products_display">
                 <h2 class="product_name">{{ i['name'] }}</h2>
+
                 <div class="product_images">
                     <div class="main_photo">
-                        <img src="../images/laptop.png" alt="laptop photo">
+                        <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][0]) }}" alt="main photo">
                     </div>
                     <div class="more_imgs">
-                        <div class="thumb">
-                            <img src="../images/135053.gif" alt="thumbnail photo">
-                        </div>
-                        <div class="thumb">
-                            <img src="../images/MV5BNjZlNGE3NjktZDkxNy00ZGQ1LTlkYzctY2U2NTYyZTY1MjliXkEyXkFqcGdeQXVyNDQxNjcxNQ@@._V1_.jpg" alt="thumbnail photo">
-                        </div>
-                        <div class="thumb last_img">
-                            <img src="../images/download.gif" alt="thumbnail photo">
-                            <button class="overlay_button">
-                                <h1>+4</h1>
-                            </button>
-                        </div>
+                        {% set counter = 1 %}
+                        {% for image in images_dict[i['product_id']][1:] %}
+                            {% if counter <= 3 %}
+                                <div class="thumb">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                </div>
+                            {% elif counter == 4 %}
+                                <div class="thumb last_img">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                    {% if (images_dict[i['product_id']]|length - 4) > 0 %}
+                                        <button class="overlay_button">
+                                            <h1>+{{ images_dict[i['product_id']]|length - 4 }}</h1>
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            {% set counter = counter + 1 %}
+                        {% endfor %}
                     </div>
                 </div>
+                
                 <p class="product_description">Description: {{ i['description'] }}</p>
                 <p class="product_price">Price: {{ i['price'] }} {{ i['currency'] }}</p>
                 <p class="product_stock">Stock: {{ i['stock'] }}</p>
@@ -66,7 +80,7 @@
                 <button class="buy">Buy</button>
                 <button class="save">Save</button>
                 <button class="favorite" onclick="toggleFavorite(this)">
-                    <img src="../images/star.png" alt="Favorite">
+                    <img src="../static/images/star.png" alt="Favorite">
                 </button>
             </article>
         {% endfor %}
