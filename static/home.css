@@ -49,7 +49,9 @@ nav a {
 }
 
 .hero-content {
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .hero h1 {
@@ -62,15 +64,31 @@ nav a {
     margin-bottom: 20px;
 }
 
-.hero .button {
+.hero .button,
+.button_group button {
     background: #ff4081;
     color: #ffffff;
     padding: 10px 20px;
     text-decoration: none;
     font-weight: bold;
+    border: none;
     border-radius: 5px;
 }
 
+.button_group .button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.button_group a {
+    margin-top: 5px;
+}
+
+.hero-content a.button {
+    margin-bottom: 15px;
+}
 
 .hero-image img {
     max-width: 80%;
@@ -78,7 +96,7 @@ nav a {
     height: auto;
 }
 
-.hero .sign_log {
+/* .sign_log {
     position: relative;
     display: flex;
     align-items: center;
@@ -87,7 +105,7 @@ nav a {
 .sign_log {
     position: relative;
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     padding: 20px;
     padding-left: 50px;
@@ -103,7 +121,7 @@ nav a {
     font-weight: bold;
     border: none;
     border-radius: 5px;
-}
+} */
 
 footer {
     position: absolute;
