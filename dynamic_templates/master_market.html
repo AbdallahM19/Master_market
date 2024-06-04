@@ -43,24 +43,29 @@
                         <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][0]) }}" alt="main photo">
                     </div>
                     <div class="more_imgs">
-                        {% set counter = 1 %}
-                        {% for image in images_dict[i['product_id']][1:] %}
-                            {% if counter <= 3 %}
+
+                        {% if images_dict[i['product_id']]|length <= 4 %}
+                            {% for image in images_dict[i['product_id']][1:4] %}
                                 <div class="thumb">
                                     <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
                                 </div>
-                            {% elif counter == 4 %}
-                                <div class="thumb last_img">
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if images_dict[i['product_id']]|length > 4 %}
+                            {% for image in images_dict[i['product_id']][1:3] %}
+                                <div class="thumb">
                                     <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
-                                    {% if (images_dict[i['product_id']]|length - 4) > 0 %}
-                                        <button class="overlay_button">
-                                            <h1>+{{ images_dict[i['product_id']]|length - 4 }}</h1>
-                                        </button>
-                                    {% endif %}
                                 </div>
-                            {% endif %}
-                            {% set counter = counter + 1 %}
-                        {% endfor %}
+                            {% endfor %}
+                            <div class="thumb last_img">
+                                <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][3]) }}" alt="thumbnail photo">
+                                <button class="overlay_button">
+                                    <h1>+{{ images_dict[i['product_id']]|length - 4 }}</h1>
+                                </button>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
                 

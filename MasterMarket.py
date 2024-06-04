@@ -3,6 +3,7 @@
 import json
 import mysql
 import mysql.connector
+from decimal import Decimal
 from mysql.connector import errorcode
 from Products_Functions import products_functions
 from Users_Functions import users_functions
@@ -12,7 +13,7 @@ from Cart_Store_Functions import cart_store_functions
 def master_market():
     """main functions"""
     print("Welcome in Master MArket\n-How can i help you?")
-    list_choose = ["Products", "Users", "Shopping (Cart Store)", "Convert From JSON To Mysql", "Exit"]
+    list_choose = ["Products", "Users", "Shopping (Cart Store)", "Convert From JSON To Mysql", "Convert From Mysql To JSON", "Exit"]
     while True:
         print("~"*15)
         for i in list_choose:
@@ -29,6 +30,8 @@ def master_market():
             cart_store()
         elif select_input == "4":
             convert_from_json_to_mysql()
+        elif select_input == "5":
+            convert_from_mysql_to_json()
         elif select_input == "0":
             print("Bye.")
             exit(0)
@@ -271,6 +274,46 @@ def convert_from_json_to_mysql():
     cursor.close()
     db.close()
     print("Data successfully converted from JSON to MySQL.")
+
+
+def convert_from_mysql_to_json():
+    """convert from mysql to json"""
+    print("*"*10)
+    print("Convert From Mysql To Json:")
+
+    db = mysql.connector.connect(
+        host="localhost",
+        user="master_user",
+        password="master_market_pwd",
+        database="master_market_db"
+    )
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("""SELECT * FROM products""")
+    products_data = cursor.fetchall()
+
+    for i in products_data:
+        i["images"] = i["images"].split(", ")
+        i["attributes"] = i["attributes"].split(", ")
+        for key, value in i.items():
+            if isinstance(value, Decimal):
+                i[key] = float(value)
+
+    with open("products_after.json", "w") as product_file:
+        json.dump(products_data, product_file, indent=4)
+
+    cursor.execute("""SELECT * FROM users""")
+    users_data = cursor.fetchall()
+
+    for u in users_data:
+        u["cart"] = u["cart"].split(", ") if u["cart"] else []
+
+    with open("users_after.json", "w") as user_file:
+        json.dump(users_data, user_file, indent=4)
+
+    cursor.close()
+    db.close()
+    print("Data successfully converted from Mysql to Json.")
 
 
 if __name__ == "__main__":

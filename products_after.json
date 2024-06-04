@@ -17,6 +17,22 @@
         ]
     },
     {
+        "product_id": "d18fb79f-0589-33a5-1524-9b829ed66f9b",
+        "name": "pc",
+        "description": "A PC",
+        "price": 899.99,
+        "currency": "USD",
+        "stock": 15,
+        "category": "Electronics",
+        "brand": "BrandZ",
+        "images": [
+            "interface.gif"
+        ],
+        "attributes": [
+            "Size: Full Size"
+        ]
+    },
+    {
         "product_id": "d18fb79f-7494-42c0-8342-9b829ed66f9b",
         "name": "Smartphone",
         "description": "A smartphone device",
@@ -33,19 +49,44 @@
         ]
     },
     {
-        "product_id": "d18fb79f-0589-33a5-1524-9b829ed66f9b",
-        "name": "pc",
-        "description": "A PC",
-        "price": 899.99,
+        "product_id": "d18fb79f-8469-33a5-1524-9b829ed66f9b",
+        "name": "Video",
+        "description": "Film X-Men and Login",
+        "price": 20.99,
         "currency": "USD",
-        "stock": 15,
-        "category": "Electronics",
-        "brand": "BrandZ",
+        "stock": 67,
+        "category": "Film",
+        "brand": "Video",
         "images": [
-            "interface.gif"
+            "video.gif",
+            "135053.gif",
+            "logan_smile.jpg",
+            "download.gif",
+            "images_2.png",
+            "image_4.png"
         ],
         "attributes": [
-            "Size: Full Size"
+            "Size: Full Size",
+            "quality: 4K",
+            "2K",
+            "1080p"
+        ]
+    },
+    {
+        "product_id": "e323afb6-aso8-4e80-beb0-5a1d416c98b0",
+        "name": "Glasses",
+        "description": "party glasses",
+        "price": 132.49,
+        "currency": "USD",
+        "stock": 21,
+        "category": "T-shirts",
+        "brand": "Golden Goose Style",
+        "images": [
+            "party-glasses.gif"
+        ],
+        "attributes": [
+            "color:white",
+            "size:medium"
         ]
     },
     {
@@ -83,45 +124,6 @@
         "attributes": [
             "color:black",
             "size:10"
-        ]
-    },
-    {
-        "product_id": "e323afb6-aso8-4e80-beb0-5a1d416c98b0",
-        "name": "Glasses",
-        "description": "party glasses",
-        "price": 132.49,
-        "currency": "USD",
-        "stock": 21,
-        "category": "T-shirts",
-        "brand": "Golden Goose Style",
-        "images": [
-            "party-glasses.gif"
-        ],
-        "attributes": [
-            "color:white",
-            "size:medium"
-        ]
-    },
-    {
-        "product_id": "d18fb79f-8469-33a5-1524-9b829ed66f9b",
-        "name": "Video",
-        "description": "Film X-Men and Login",
-        "price": 20.99,
-        "currency": "USD",
-        "stock": 67,
-        "category": "Film",
-        "brand": "Video",
-        "images": [
-            "video.gif",
-            "135053.gif",
-            "logan_smile.jpg",
-            "download.gif",
-            "images_2.png",
-            "image_4.png"
-        ],
-        "attributes": [
-            "Size: Full Size",
-            "quality: 4K, 2K, 1080p"
         ]
     }
 ]

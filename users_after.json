@@ -1,0 +1,31 @@
+[
+    {
+        "user_id": "31c91128-4f59-432c-a745-eb71fdc65d02",
+        "username": "user1",
+        "fullname": "John Doe",
+        "email": "john@example.com",
+        "password": "password123",
+        "cart": [
+            "8824940e-fba3-4b12-931a-bd2f1e729480",
+            "e323afb6-daab-4e80-beb0-5a1d316c98b0"
+        ]
+    },
+    {
+        "user_id": "924d0a69-c63f-4d65-89aa-6a583597cd2f",
+        "username": "userA",
+        "fullname": "Alice Johnson",
+        "email": "alice@example.com",
+        "password": "pass123",
+        "cart": [
+            "e323afb6-daab-4e80-beb0-5a1d316c98b0"
+        ]
+    },
+    {
+        "user_id": "f7e6c5a5-ba50-470a-9ba5-34b67f700a29",
+        "username": "user2",
+        "fullname": "Jane Smith",
+        "email": "jane@example.com",
+        "password": "password456",
+        "cart": []
+    }
+]
