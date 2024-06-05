@@ -56,7 +56,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/home', strict_slashes=False)
+@app.route('/mastermarket/home', strict_slashes=False)
 def home():
     products = None
     attributes_dict = {}
@@ -92,25 +92,55 @@ def home():
 
 
 @app.route('/mastermarket', strict_slashes=False)
-@app.route('/mastermarket/home', strict_slashes=False)
-@app.route('/templates/home.html', strict_slashes=False)
-@app.route('/dynamic_templates/home.html', strict_slashes=False)
 def mastermarket():
     return render_template('home.html')
 
 
-@app.route('/login', strict_slashes=False)
-@app.route('/mastermarket/login', strict_slashes=False)
-@app.route('/templates/login.html', strict_slashes=False)
-@app.route('/dynamic_templates/login.html', strict_slashes=False)
+@app.route('/mastermarket/login', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login():
+    if request.method == 'POST':
+        data = request.get_json()
+        username_or_email = data['email']
+        password = data['password']
+
+        try:
+            db = get_db_connection()
+            cursor = db.cursor(dictionary=True)
+            cursor.execute(
+                "SELECT * FROM users WHERE (username = %s OR email = %s) AND password = %s", (
+                    username_or_email,
+                    username_or_email,
+                    password
+                )
+            )
+            user = cursor.fetchone()
+            cursor.close()
+            db.close()
+
+            if not user:
+                with open("users_after.json", "r") as user_data:
+                    users = load(user_data)
+                for i in users:
+                    if (
+                        i['username'] == username_or_email
+                        or i['email'] == username_or_email
+                       ) and i['password'] == password:
+                        user = i
+                        break
+
+            if user:
+                return jsonify({"success": True})
+            else:
+                return jsonify({"success": False, "message": "Invalid Username/E-mail or Password"})
+        except Exception:
+            print("Error: {}".format(Exception))
+            return jsonify({"success": False, "message": "Internal server error"})
+
     return render_template('login.html')
 
 
-@app.route('/landing_page', strict_slashes=False)
 @app.route('/mastermarket/landing_page', strict_slashes=False)
-@app.route('/templates/landing_page.html', strict_slashes=False)
-@app.route('/dynamic_templates/landing_page.html', strict_slashes=False)
 def landing_page():
     return render_template('landing_page.html')
 

@@ -53,6 +53,6 @@ input[type=submit]:hover {
     opacity: 0.8;
 }
 
-label[for="username"], label[for="password"] {
+label[for="email"], label[for="password"] {
     font-weight: bold;
 }
