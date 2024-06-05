@@ -35,5 +35,21 @@
         "email": "meme@example.com",
         "password": "000",
         "cart": []
+    },
+    {
+        "user_id": "1518ce52-f429-4a55-8e2e-81f5afa4e1a3",
+        "username": "me",
+        "fullname": "me123",
+        "email": "me123@example.com",
+        "password": "123",
+        "cart": []
+    },
+    {
+        "user_id": "7c00682e-a41e-4acd-87e9-86d72eeb7de0",
+        "username": "meme123",
+        "fullname": "meme meme",
+        "email": "meme123@example.com",
+        "password": "000",
+        "cart": []
     }
 ]

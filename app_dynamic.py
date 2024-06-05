@@ -4,6 +4,7 @@
 
 import re
 import uuid
+from MasterMarket import convert_from_json_to_mysql, convert_from_mysql_to_json
 from json import load, dump
 from flask import Flask, render_template, request, jsonify
 import mysql.connector
@@ -195,14 +196,21 @@ def register():
                 with open("users_after.json", "r") as user_data:
                     users = load(user_data)
                 for i in users:
-                    if i['username'] == username and i['email'] == email:
+                    if i['username'] == username or i['email'] == email:
                         user = i
                         break
 
             if user:
-                return jsonify({"success": False, "message": "Username / E-mail is Exists."})
+                if user['username'] == username and user['email'] == email:
+                    return jsonify({"success": False, "message": "Username & E-mail is Exists."})
+                elif user['email'] == email:
+                    return jsonify({"success": False, "message": "E-mail is Exists."})
+                elif user['username'] == username:
+                    return jsonify({"success": False, "message": "Username is Exists."})
             else:
                 register_user(username, fullname, email, password)
+                convert_from_json_to_mysql()
+                convert_from_mysql_to_json()
                 return jsonify({"success": True})
         except Exception:
             print("Error: {}".format(Exception))
