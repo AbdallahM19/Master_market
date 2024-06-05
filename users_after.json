@@ -21,6 +21,14 @@
         ]
     },
     {
+        "user_id": "e7de3e1d-34ee-4e84-a93d-f770e01db12c",
+        "username": "meme",
+        "fullname": "meme meme",
+        "email": "meme@example.com",
+        "password": "000",
+        "cart": []
+    },
+    {
         "user_id": "f7e6c5a5-ba50-470a-9ba5-34b67f700a29",
         "username": "user2",
         "fullname": "Jane Smith",

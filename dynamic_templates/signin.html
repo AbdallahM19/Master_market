@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="icon" href="../static/images/download.png" type="img">
-    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/sign_in.css">
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
-        <img src="../static/images/8121295.gif" alt="GIF Description" class="centered_gif">
+        <h2>Register</h2>
         <form id="loginForm">
-            <label for="email">Username or E-mail:</label>
+            <label for="username">Username:</label>
             <br>
-            <input type="text" id="email" name="email" required>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="fullname">Full Name:</label>
+            <br>
+            <input type="text" id="fullname" name="fullname" required>
+            <br>
+            <label for="email">E-mail:</label>
+            <br>
+            <input type="email" id="email" name="email" required>
             <br>
             <label for="password">Password:</label>
             <br>
@@ -24,6 +31,6 @@
         </form>
         <p id="error" style="color: red; text-align: center;"></p>
     </div>
-    <script src="../static/login_code.js"></script>
+    <script src="../static/signin_code.js"></script>
 </body>
 </html>

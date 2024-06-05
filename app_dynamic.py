@@ -2,7 +2,9 @@
 """Script to start a Flask web application"""
 
 
-from json import load
+import re
+import uuid
+from json import load, dump
 from flask import Flask, render_template, request, jsonify
 import mysql.connector
 
@@ -40,6 +42,32 @@ def transform_images_list(products):
         images_list = product['images'] if 'images' in product else []
         images_dict[product['product_id']] = images_list
     return images_dict
+
+
+def register_user(username, fullname, email, password, filename="users.json"):
+        """Register a new user"""
+        new_user = {
+            "user_id": str(uuid.uuid4()),
+            "username": username,
+            "fullname": fullname,
+            "email": email,
+            "password": password,
+            "cart": []
+        }
+        try:
+            with open(filename, "r") as file:
+                users = load(file)
+        except FileNotFoundError:
+            users = []
+
+        for user in users:
+            if user["username"] == username:
+                return
+            if user["email"] == email:
+                return
+        users.append(new_user)
+        with open("users.json", "w") as file:
+            dump(users, file, indent=4)
 
 
 def get_db_connection():
@@ -138,6 +166,49 @@ def login():
             return jsonify({"success": False, "message": "Internal server error"})
 
     return render_template('login.html')
+
+
+@app.route('/mastermarket/register', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/register', methods=['GET', 'POST'], strict_slashes=False)
+def register():
+    if request.method == 'POST':
+        data = request.get_json()
+        username = data['username']
+        fullname = data['fullname']
+        email = data['email']
+        password = data['password']
+
+        try:
+            db = get_db_connection()
+            cursor = db.cursor(dictionary=True)
+            cursor.execute(
+                "SELECT * FROM users WHERE username = %s AND email = %s", (
+                    username,
+                    email
+                )
+            )
+            user = cursor.fetchone()
+            cursor.close()
+            db.close()
+
+            if not user:
+                with open("users_after.json", "r") as user_data:
+                    users = load(user_data)
+                for i in users:
+                    if i['username'] == username and i['email'] == email:
+                        user = i
+                        break
+
+            if user:
+                return jsonify({"success": False, "message": "Username / E-mail is Exists."})
+            else:
+                register_user(username, fullname, email, password)
+                return jsonify({"success": True})
+        except Exception:
+            print("Error: {}".format(Exception))
+            return jsonify({"success": False, "message": "Internal server error"})
+
+    return render_template('signin.html')
 
 
 @app.route('/mastermarket/landing_page', strict_slashes=False)
