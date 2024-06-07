@@ -22,8 +22,12 @@ class products_functions:
             "stock": int(input("Enter stock quantity: ")),
             "category": input("Enter product category: "),
             "brand": input("Enter product brand: "),
-            "images": input("Enter image URLs (comma-separated): ").replace(", ", ",").split(","),
-            "attributes": input("Enter additional attributes (e.g., size:large,color:red): ").replace(", ", ",").split(","),
+            "images": input(
+                "Enter image URLs (comma-separated): "
+            ).replace(", ", ",").split(","),
+            "attributes": input(
+                "Enter additional attributes (e.g., size:large,color:red): "
+            ).replace(", ", ",").split(",")
         }
         self.save_product(product)
 
