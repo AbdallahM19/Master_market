@@ -43,7 +43,9 @@ class users_functions:
 
         for user in users:
             if user["username"] == username:
-                print("Username already exists. Please choose a different username.")
+                print(
+                    "Username already exists. Please choose a different username."
+                )
                 return
             if user["email"] == email:
                 print("Email already exists. Please use a different email.")
@@ -135,7 +137,9 @@ class users_functions:
 
         for user in users:
             if user["email"] == email:
-                confirmation = input("Are you sure you want to delete your account? (yes/no): ").lower()
+                confirmation = input(
+                    "Are you sure you want to delete your account? (yes/no): "
+                ).lower()
                 password = input("please enter your password: ")
                 if confirmation == "yes" and password == user["password"]:
                     users.remove(user)
