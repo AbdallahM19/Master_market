@@ -270,7 +270,8 @@ def register():
                         break
 
             if user_exists:
-                if user_exists['username'] == username and user_exists['email'] == email:
+                if user_exists['username'] == username\
+                  and user_exists['email'] == email:
                     return jsonify(
                         {
                             "success": False,
