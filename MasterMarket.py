@@ -13,7 +13,14 @@ from Cart_Store_Functions import cart_store_functions
 def master_market():
     """main functions"""
     print("Welcome in Master MArket\n-How can i help you?")
-    list_choose = ["Products", "Users", "Shopping (Cart Store)", "Convert From JSON To Mysql", "Convert From Mysql To JSON", "Exit"]
+    list_choose = [
+        "Products",
+        "Users",
+        "Shopping (Cart Store)",
+        "Convert From JSON To Mysql",
+        "Convert From Mysql To JSON",
+        "Exit"
+    ]
     while True:
         print("~"*15)
         for i in list_choose:
@@ -37,6 +44,7 @@ def master_market():
             exit(0)
         else:
             print("Invalid Input.")
+
 
 def products():
     """Products functions"""
@@ -73,6 +81,7 @@ def products():
             return(0)
         else:
             print("Invalid Input.")
+
 
 def users():
     """users functions"""
@@ -113,6 +122,7 @@ def users():
         else:
             print("Invalid Input.")
 
+
 def cart_store():
     """cart store functions"""
     print("*"*10)
@@ -132,8 +142,10 @@ def cart_store():
                 print("0. {}".format(select))
             else:
                 print("{}. {}".format(i + 1, select))
+
         select_input = input("Enter your choice: ")
         carts_functions_instance = cart_store_functions()
+
         if select_input == "1":
             carts_functions_instance.add_product_to_cart()
         elif select_input == "2":
@@ -144,17 +156,17 @@ def cart_store():
             carts_functions_instance.clear_cart()
         elif select_input == "5":
             carts_functions_instance.calculate_total_price()
-            
         elif select_input == "0":
             return(0)
         else:
             print("Invalid Input.")
 
+
 def convert_from_json_to_mysql():
     """convert from json to mysql"""
     print("*"*10)
     print("Convert From Json To Mysql:")
-    
+
     with open("products.json", "r") as products_file:
         products_data = json.load(products_file)
 
@@ -169,7 +181,9 @@ def convert_from_json_to_mysql():
     root_cursor = root_connection.cursor()
 
     try:
-        root_cursor.execute("CREATE DATABASE IF NOT EXISTS master_market_db")
+        root_cursor.execute(
+            "CREATE DATABASE IF NOT EXISTS master_market_db"
+        )
         root_cursor.execute("USE master_market_db")
 
         root_cursor.execute("""
@@ -226,7 +240,18 @@ def convert_from_json_to_mysql():
 
     for product in products_data:
         cursor.execute("""
-        INSERT INTO products (product_id, name, description, price, currency, stock, category, brand, images, attributes)
+        INSERT INTO products (
+                product_id,
+                name,
+                description,
+                price,
+                currency,
+                stock,
+                category,
+                brand,
+                images,
+                attributes
+            )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
             name=VALUES(name),
@@ -317,4 +342,5 @@ def convert_from_mysql_to_json():
 
 
 if __name__ == "__main__":
+    """run master market backend"""
     master_market()
