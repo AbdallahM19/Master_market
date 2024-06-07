@@ -161,7 +161,11 @@ class cart_store_functions:
                     product_price = self.get_product_price(product_id)
                     if product_price is not None:
                         total_price += product_price
-                print("Total price of products in the cart: ${:.2f}".format(total_price))
+                print(
+                    "Total price of products in the cart: ${:.2f}".format(
+                        total_price
+                    )
+                )
                 return
         if not user_found:
             print("User not found.")
@@ -174,7 +178,7 @@ class cart_store_functions:
                 return product.get("price")
         print(f"Product with ID {product_id} not found.")
         return None
-    
+
     def get_product_details(self, product_id):
         """Get details of a product by its ID"""
         for product in self.products_data:
