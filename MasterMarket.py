@@ -205,10 +205,11 @@ def convert_from_json_to_mysql():
             root_cursor.execute("USE master_market_db")
 
             root_cursor.execute("""\
-CREATE USER IF NOT EXISTS 'master_user'@'localhost' IDENTIFIED BY 'master_market_pwd';\
+CREATE USER IF NOT EXISTS 'master_user'@'localhost'\
+ IDENTIFIED BY 'master_market_pwd';
             """)
             root_cursor.execute("""\
-GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';\
+GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
             """)
             root_cursor.execute("""FLUSH PRIVILEGES;""")
 
@@ -409,7 +410,7 @@ def convert_from_mysql_to_json():
         # Process users data
         for user in users_data:
             user["cart"] = user["cart"].split(", ")\
-            if user["cart"] else []
+                if user["cart"] else []
 
         # Write users data to JSON file
         with open("users_after.json", "w") as user_file:
