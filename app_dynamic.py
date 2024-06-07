@@ -2,7 +2,6 @@
 """Script to start a Flask web application"""
 
 
-import re
 import uuid
 from MasterMarket import convert_from_json_to_mysql, convert_from_mysql_to_json
 from json import load, dump
@@ -193,22 +192,22 @@ def login():
                     password
                 )
             )
-            user = cursor.fetchone()
+            user_exists = cursor.fetchone()
             cursor.close()
             db.close()
 
-            if not user:
+            if not user_exists:
                 with open("users_after.json", "r") as user_data:
                     users = load(user_data)
-                for i in users:
+                for user in users:
                     if (
-                        i['username'] == username_or_email
-                        or i['email'] == username_or_email
-                       ) and i['password'] == password:
-                        user = i
+                        user['username'] == username_or_email
+                        or user['email'] == username_or_email
+                       ) and user['password'] == password:
+                        user_exists = user
                         break
 
-            if user:
+            if user_exists:
                 return jsonify({"success": True})
             else:
                 return jsonify(
@@ -258,34 +257,34 @@ def register():
                     email
                 )
             )
-            user = cursor.fetchone()
+            user_exists = cursor.fetchone()
             cursor.close()
             db.close()
 
-            if not user:
+            if not user_exists:
                 with open("users_after.json", "r") as user_data:
                     users = load(user_data)
-                for i in users:
-                    if i['username'] == username or i['email'] == email:
-                        user = i
+                for user in users:
+                    if user['username'] == username or user['email'] == email:
+                        user_exists = user
                         break
 
-            if user:
-                if user['username'] == username and user['email'] == email:
+            if user_exists:
+                if user_exists['username'] == username and user_exists['email'] == email:
                     return jsonify(
                         {
                             "success": False,
                             "message": "Username & E-mail is Exists."
                         }
                     )
-                elif user['email'] == email:
+                elif user_exists['email'] == email:
                     return jsonify(
                         {
                             "success": False,
                             "message": "E-mail is Exists."
                         }
                     )
-                elif user['username'] == username:
+                elif user_exists['username'] == username:
                     return jsonify(
                         {
                             "success": False,
