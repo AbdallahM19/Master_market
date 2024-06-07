@@ -3,6 +3,7 @@ import mysql.connector
 
 app = Flask(__name__)
 
+
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -11,9 +12,11 @@ def get_db_connection():
         database="master_market_db"
     )
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/api/products', methods=['GET'])
 def get_products():
@@ -25,17 +28,21 @@ def get_products():
     db.close()
     return jsonify(products)
 
+
 @app.route('/home')
 def home():
     return render_template('master_market.html')
+
 
 @app.route('/mastermarket')
 def mastermarket():
     return render_template('home.html')
 
+
 @app.route('/login')
 def login():
     return render_template('login.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
