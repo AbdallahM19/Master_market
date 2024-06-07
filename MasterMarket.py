@@ -187,10 +187,12 @@ def convert_from_json_to_mysql():
         root_cursor.execute("USE master_market_db")
 
         root_cursor.execute("""
-        CREATE USER IF NOT EXISTS 'master_user'@'localhost' IDENTIFIED BY 'master_market_pwd';
+            CREATE USER IF NOT EXISTS 'master_user'@'localhost'\
+                IDENTIFIED BY 'master_market_pwd';
         """)
         root_cursor.execute("""
-        GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
+            GRANT ALL PRIVILEGES ON master_market_db.* TO\
+                'master_user'@'localhost';
         """)
         root_cursor.execute("""
         FLUSH PRIVILEGES;
