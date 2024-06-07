@@ -44,7 +44,8 @@ class users_functions:
         for user in users:
             if user["username"] == username:
                 print(
-                    "Username already exists. Please choose a different username."
+                    "Username already exists.\n\
+                    Please choose a different username."
                 )
                 return
             if user["email"] == email:
