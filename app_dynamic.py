@@ -14,6 +14,10 @@ app = Flask(__name__, template_folder='dynamic_templates')
 
 
 def transform_attributes(products):
+    """
+    return attributes each product
+    ((this function use if data got from mysql data))
+    """
     attributes_dict = {}
     for product in products:
         attributes_list = product[
@@ -24,6 +28,10 @@ def transform_attributes(products):
 
 
 def transform_images(products):
+    """
+    return images each product
+    ((this function use if data got from mysql data))
+    """
     images_dict = {}
     for product in products:
         images_list = product[
@@ -34,6 +42,10 @@ def transform_images(products):
 
 
 def transform_attributes_list(products):
+    """
+    return attributes each product
+    this function use if data got from file.json
+    """
     attributes_dict = {}
     for product in products:
         attributes_list = product[
@@ -44,6 +56,10 @@ def transform_attributes_list(products):
 
 
 def transform_images_list(products):
+    """
+    return images each product
+    this function use if data got from file.json
+    """
     images_dict = {}
     for product in products:
         images_list = product['images'] if 'images' in product else []
@@ -52,6 +68,9 @@ def transform_images_list(products):
 
 
 def register_user(username, fullname, email, password, filename="users.json"):
+    """
+    append new user to users.json file with his own data
+    """
     new_user = {
         "user_id": str(uuid.uuid4()),
         "username": username,
@@ -78,6 +97,7 @@ def register_user(username, fullname, email, password, filename="users.json"):
 
 
 def get_db_connection():
+    """Connect Mysql"""
     return mysql.connector.connect(
         host="localhost",
         user="master_user",
@@ -88,11 +108,23 @@ def get_db_connection():
 
 @app.route('/', strict_slashes=False)
 def index():
+    """
+    index page give me some information about the current products
+    i made it to:
+        1. know and see that my code work
+        2. i can access to the data
+    """
     return render_template('index.html')
 
 
 @app.route('/mastermarket/home', strict_slashes=False)
 def home():
+    """
+    return master_market.html and display:
+        1. all products
+        2. all images in each products
+        3. show all information about each product
+    """
     products = None
     attributes_dict = {}
     images_dict = {}
@@ -128,6 +160,7 @@ def home():
 
 @app.route('/mastermarket', strict_slashes=False)
 def mastermarket():
+    """return home.html (open the main page)"""
     return render_template('home.html')
 
 
@@ -138,6 +171,11 @@ def mastermarket():
 )
 @app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
 def login():
+    """
+    check if username or email is exists or not.
+    if exists, give me access to home page.
+    overwise, don't take me to home page
+    """
     if request.method == 'POST':
         data = request.get_json()
         username_or_email = data['email']
@@ -198,6 +236,12 @@ def login():
 )
 @app.route('/register', methods=['GET', 'POST'], strict_slashes=False)
 def register():
+    """
+    check if username or email repeated or not.
+    if repeat, i ask from user to give me another:
+        because username or email is present.
+    overwise, it make new user with the new username and email.
+    """
     if request.method == 'POST':
         data = request.get_json()
         username = data['username']
@@ -267,6 +311,7 @@ def register():
 
 @app.route('/mastermarket/landing_page', strict_slashes=False)
 def landing_page():
+    """return landing_page.html"""
     return render_template('landing_page.html')
 
 
