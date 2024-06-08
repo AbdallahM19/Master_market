@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import json
 import mysql
 import mysql.connector
@@ -432,8 +430,3 @@ def convert_from_mysql_to_json():
         # Close cursor and database connection
         cursor.close()
         db.close()
-
-
-if __name__ == "__main__":
-    """run master market backend"""
-    master_market()
