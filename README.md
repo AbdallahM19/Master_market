@@ -91,7 +91,7 @@ This project taught me invaluable lessons about time management, problem-solving
 
 ---
 
-- ***And work on adding many features including***
+### And work on adding many features including:
 
 - Adding a product.
 - Adding images of the product.
@@ -108,9 +108,9 @@ This project taught me invaluable lessons about time management, problem-solving
 ---
 ### User Authentication
 ![image](./static/images/master_login_or_register.jpg)
-- **Secure Login**: Users can securely log in using their email and password.
+#### **Secure Login**: Users can securely log in using their email and password.
 ![login](./static/images/login_page.jpg)
-- **Registration**: New users can sign up by providing their details.
+#### **Registration**: New users can sign up by providing their details.
 ![register](./static/images/register.jpg)
 
 ### Home page
@@ -147,37 +147,6 @@ This project taught me invaluable lessons about time management, problem-solving
 
 ---
 
-## All Static pages
-<h3>
-<a href="https://abdallahm19.github.io/Master_market/">GitHub Page</a>
-</h3>
-<h3>
-<a href="https://abdallahm19.github.io/Master_market/templates/home.html">Master Market Page</a>
-</h3>
-<h3>
-<a href="https://abdallahm19.github.io/Master_market/templates/home_login.html">Master Market Page and login button</a>
-</h3>
-<h2>
-<a href="https://abdallahm19.github.io/Master_market/templates/landing_page.html">Landing Page</a>
-</h2>
-<h2>
-<a href="https://abdallahm19.github.io/Master_market/templates/master_market.html">Home Page</a>
-</h2>
-<h2>
-<a href="https://abdallahm19.github.io/Master_market/templates/master_market_img.html">Home Copy Page</a>
-</h2>
-
----
-
-## All Dynamic pages
-- **Home Page** [https://abdallahm19.github.io/Master_market/dynamic_templates/master_market.html]
-<h2><a href="https://abdallahm19.github.io/Master_market/dynamic_templates/landing_page.html">Landing Page</a></h2>
-<h2><a href="https://abdallahm19.github.io/Master_market/dynamic_templates/login.html">Login Page</a></h2>
-<h2><a href="https://abdallahm19.github.io/Master_market/dynamic_templates/signin.html">Register Page</a></h2>
-<h2><a href="https://abdallahm19.github.io/Master_market/dynamic_templates/home.html">Master Market Page</a></h2>
-
----
-
 ## Installation
 To get a local copy up and running follow these simple steps.
 
@@ -187,7 +156,7 @@ To get a local copy up and running follow these simple steps.
     ```
 2. **Navigate to the project directory:**
     ```sh
-    cd master-market
+    cd Master_market
     ```
 3. **Install dependencies:**
     ```sh
@@ -197,7 +166,6 @@ To get a local copy up and running follow these simple steps.
 4. **Set up the database:**
     - Ensure you have MySQL installed and running.
     - Create a database named `master_market_db`.
-    - Import the database schema from `schema.sql` file.
     - Import the database schema from the [`schema.sql`](./schema.sql) file.
     - Alternatively, you can skip this step as the app will create the database and tables and insert data.
 5. **Run the application:**
@@ -238,7 +206,7 @@ Contributions are what make the open source community such an amazing place to l
 3. **Create a New Branch:**
    - Move into the repository's directory.
      ```sh
-     cd master-market
+     cd Master_market
      ```
    - Create a new branch with a descriptive name.
      ```sh
@@ -271,6 +239,47 @@ Contributions are what make the open source community such an amazing place to l
    - Click on "Create Pull Request" to submit your contribution for review.
 
 Thank you for considering contributing to Master Market! Your help is greatly appreciated.
+
+---
+
+## All Static pages
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/">GitHub Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/templates/home.html">Master Market Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/templates/home_login.html">Master Market Page and login button</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/templates/landing_page.html">Landing Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/templates/master_market.html">Home Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/templates/master_market_img.html">Home Copy Page</a>
+</h3>
+
+---
+
+## All Dynamic pages
+<h2>
+<a href="https://abdallahm19.github.io/Master_market/dynamic_templates/master_market.html">Home Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/dynamic_templates/landing_page.html">Landing Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/dynamic_templates/login.html">Login Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/dynamic_templates/signin.html">Register Page</a>
+</h3>
+<h3>
+<a href="https://abdallahm19.github.io/Master_market/dynamic_templates/home.html">Master Market Page</a>
+</h3>
 
 ---
 
