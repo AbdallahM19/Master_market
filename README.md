@@ -10,10 +10,11 @@
 5. [Installation](#installation)
 6. [Usage](#usage)
 7. [Contributing](#contributing)
-8. [Related Projects](#related-projects)
-9. [Licensing](#licensing)
-10. [All Static pages](#all-static-pages)
-11. [All Dynamic pages](#all-dynamic-pages)
+8. [All Static pages](#all-static-pages)
+9. [All Dynamic pages](#all-dynamic-pages)
+10. [Related Projects](#related-projects)
+11. [Licensing](#licensing)
+12. [Copyright](#copyright)
 
 ## Introduction
 Welcome to Master Market, the ultimate e-commerce experience. This project is designed to provide a seamless shopping experience with a user-friendly interface and robust backend.
@@ -21,7 +22,8 @@ Welcome to Master Market, the ultimate e-commerce experience. This project is de
 ![Screenshot of Master Market](./static/images/mastermarket.jpg)
 
 - **Deployed Sites**: [Master Market Live](https://abdallahm19.github.io/Master_market/templates/landing_page.html)
-- **Final Project Blog Article:** [Project Blog](#)
+- **Final Project Blog Article Medium:** [Project Blog](https://medium.com/@AbdallahM19/master-market-creating-an-ai-powered-e-commerce-experience-ea847fa09be8)
+- **Final Project Blog Article LinkedIn:** [Project Blog](https://www.linkedin.com/pulse/master-market-abdallah-mohamed-cev1f/?trackingId=cbC6TnUFRfqE%2BhqtG1KUbg%3D%3D)
 - **Author's LinkedIn:** [LinkedIn Page](https://www.linkedin.com/in/abdallah-mohamed-628416289/)
 
 ---
