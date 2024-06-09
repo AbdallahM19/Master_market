@@ -200,7 +200,7 @@ Contributions are what make the open source community such an amazing place to l
 2. **Clone the Repository:**
    - Clone your forked repository to your local machine.
      ```sh
-     git clone https://github.com/your-username/master-market.git
+     git clone https://github.com/your-username/Master_market.git
      ```
 
 3. **Create a New Branch:**
@@ -265,7 +265,7 @@ Thank you for considering contributing to Master Market! Your help is greatly ap
 ---
 
 ## All Dynamic pages
-<h2>
+<h3>
 <a href="https://abdallahm19.github.io/Master_market/dynamic_templates/master_market.html">Home Page</a>
 </h3>
 <h3>
