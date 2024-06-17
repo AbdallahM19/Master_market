@@ -6,7 +6,6 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
     width: center;
 }
@@ -38,6 +37,10 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
+label[for="email"], label[for="password"] {
+    font-weight: bold;
+}
+
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -49,10 +52,16 @@ input[type=submit] {
     width: 100%;
 }
 
-input[type=submit]:hover {
-    opacity: 0.8;
+.login-container a {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-label[for="email"], label[for="password"] {
-    font-weight: bold;
+input[type=submit]:hover,
+.login-container a:hover {
+    opacity: 0.8;
 }

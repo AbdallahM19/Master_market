@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }}</title>
+    <link rel="stylesheet" href="../static/profile.css">
+</head>
+<body>
+    <section>
+        <h1>{{ user['fullname'] }}</h1>
+        <a type="profile" href="/profile/{{ current_user.username }}">
+            <img src="../static/images/past.gif">
+        </a>
+        <p>@{{ user['username'] }}</p>
+        <p>{{ user['email'] }}</p>
+        <a type="home_in" href="/home">Home</a>
+        <a type="logout" href="{{ url_for('logout') }}">Logout</a>
+    </section>
+</body>
+</html>

@@ -6,52 +6,162 @@
     <title>Master Market</title>
     <link rel="icon" href="../static/images/ai.png" type="img">
     <link rel="stylesheet" href="../static/home.css">
+    <script src="../static/search.js" defer></script>
+    <script src="../static/star_button.js" defer></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="../static/images/ai.png" type="logo">
-            Master Market
+            <a href="/">
+                <button>
+                    <img src="../static/images/ai.png" type="logo">
+                </button>
+            </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="some_button">
+            <a href="/home">Home</a>
+            <a href="/product_manager">Products Manager</a>
+            <a href="/shopping_cart">Shopping cart</a>
+            <a type="logout" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <div class="profile">
+            <a href="/profile/{{ current_user.username }}">
+                <img src="../static/images/past.gif">
+            </a>
+        </div>
     </header>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Shopping Online</h1>
-            <p>Welcome to Master Market, your ultimate destination for online shopping.</p>
-            <p>Our platform provides a seamless and dynamic shopping experience, allowing users to browse, buy, and save products with ease.</p>
-            <p>From the moment you log in or register, you can explore a wide range of products, each with detailed descriptions and images.</p>
-            <p>We've designed a personalized page for each product and a favorites section for your convenience.</p>
-            <p>Enjoy the benefits of a user-friendly interface, secure transactions, and a vast selection of items, all tailored to meet your needs.</p>
-            <a href="./landing_page.html" class="button">Read More</a>
+    <section>
+        <div class="search_box">
+            <input type="text" id="searchInput" placeholder="Search">
+            <button class="button_search">
+                <img src="../static/images/search_icon.png" alt="search button">
+            </button>
         </div>
-        <div class="hero-image">
-            <img src="../static/images/ai.png" alt="Shopping Cart">
+        <div class="some_products">
+            <h1>Trending</h1>
         </div>
     </section>
-    <footer>
-        <div class="social-links">
-            <a class="empty"></a>
-            <a class="facebook" href="https://www.facebook.com/">
-                <img src="../static/images/2023_Facebook_icon.svg.png" alt="Your Image Description">
-            </a>
-            <a class="youtube" href="https://www.youtube.com/">
-                <img src="../static/images/youtube (2).png" alt="Your Image Description">
-            </a>
-            <a class="twitter" href="https://x.com/home">
-                <img src="../static/images/twitter.png" alt="Your Image Description">
-            </a>
-            <a class="twitter" href="https://www.instagram.com/">
-                <img src="../static/images/instagram.png" alt="Your Image Description">
-            </a>
+    <section class="information">
+        {% for i in products|sort(attribute='name') %}
+            <article class="products_display">
+                <h2 class="product_name">{{ i['name'] }}</h2>
+
+                <div class="product_images">
+                    <div class="main_photo">
+                        <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][0]) }}" alt="main photo">
+                    </div>
+                    <div class="more_imgs">
+
+                        {% if images_dict[i['product_id']]|length <= 4 %}
+                            {% for image in images_dict[i['product_id']][1:4] %}
+                                <div class="thumb">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if images_dict[i['product_id']]|length > 4 %}
+                            {% for image in images_dict[i['product_id']][1:3] %}
+                                <div class="thumb">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                </div>
+                            {% endfor %}
+                            <div class="thumb last_img">
+                                <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][3]) }}" alt="thumbnail photo">
+                                <button class="overlay_button">
+                                    <h1>+{{ images_dict[i['product_id']]|length - 4 }}</h1>
+                                </button>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                
+                <p class="product_description">Description: {{ i['description'] }}</p>
+                <p class="product_price">Price: {{ i['price'] }} {{ i['currency'] }}</p>
+                <p class="product_stock">Stock: {{ i['stock'] }}</p>
+                <p class="product_category">Category: {{ i['category'] }}</p>
+                <p class="product_brand">Brand: {{ i['brand'] }}</p>
+                <div class="product_attributes">
+                    <p>Attributes:</p>
+                    <ul>
+                        {% for attr in attributes_dict[i['product_id']] %}
+                            <li>{{ attr }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="buy">Buy</button>
+                <button class="save" data-product-id="{{ i['product_id'] }}">Save</button>
+                <button class="favorite" data-product-id="{{ i['product_id'] }}">
+                    <img src="../static/images/star.png" alt="Favorite">
+                </button>
+            </article>
+        {% endfor %}
+    </section>
+    <section>
+        <div class="some_products">
+            <h1>Favorite</h1>
         </div>
+    </section>
+    <section class="information">
+        {% for i in products_favoite|sort(attribute='name') %}
+            <article class="products_display_cart">
+                <h2 class="product_name">{{ i['name'] }}</h2>
+
+                <div class="product_images">
+                    <div class="main_photo">
+                        <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][0]) }}" alt="main photo">
+                    </div>
+                    <div class="more_imgs">
+
+                        {% if images_dict[i['product_id']]|length <= 4 %}
+                            {% for image in images_dict[i['product_id']][1:4] %}
+                                <div class="thumb">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if images_dict[i['product_id']]|length > 4 %}
+                            {% for image in images_dict[i['product_id']][1:3] %}
+                                <div class="thumb">
+                                    <img src="{{ url_for('static', filename='images/' ~ image) }}" alt="thumbnail photo">
+                                </div>
+                            {% endfor %}
+                            <div class="thumb last_img">
+                                <img src="{{ url_for('static', filename='images/' ~ images_dict[i['product_id']][3]) }}" alt="thumbnail photo">
+                                <button class="overlay_button">
+                                    <h1>+{{ images_dict[i['product_id']]|length - 4 }}</h1>
+                                </button>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+                
+                <p class="product_description">Description: {{ i['description'] }}</p>
+                <p class="product_price">Price: {{ i['price'] }} {{ i['currency'] }}</p>
+                <p class="product_stock">Stock: {{ i['stock'] }}</p>
+                <p class="product_category">Category: {{ i['category'] }}</p>
+                <p class="product_brand">Brand: {{ i['brand'] }}</p>
+                <div class="product_attributes">
+                    <p>Attributes:</p>
+                    <ul>
+                        {% for attr in attributes_dict[i['product_id']] %}
+                            <li>{{ attr }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="buy">Buy</button>
+                <button class="save" data-product-id="{{ i['product_id'] }}">Save</button>
+                <button class="favorite" data-product-id="{{ i['product_id'] }}">
+                    <img src="../static/images/star.png" alt="Favorite">
+                </button>
+            </article>
+        {% endfor %}
+    </section>
+    <footer>
+        <h1>Master Market</h1>
     </footer>
 </body>
 </html>

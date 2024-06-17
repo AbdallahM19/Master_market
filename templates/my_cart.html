@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Market</title>
+    <link rel="icon" href="../static/images/ai.png" type="img">
+    <link rel="stylesheet" href="../static/product_control.css">
+    <link rel="stylesheet" href="../static/cart.css">
+    <script src="../static/star_button.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <button>
+                    <img src="../static/images/ai.png" type="logo">
+                </button>
+            </a>
+        </div>
+        <div class="some_button">
+            <a href="/home">Home</a>
+            <a href="/product_manager">Products Manager</a>
+            <a href="/shopping_cart">Shopping cart</a>
+            <a type="logout" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <div class="profile">
+            <a href="/profile/{{ current_user.username }}">
+                <img src="../static/images/past.gif">
+            </a>
+        </div>
+    </header>
+
+    <section class="cart">
+        <h1>Cart</h1>
+        <h2>Total price of products in the cart: {{ price_all }}</h2>
+    </section>
+
+    <section class="information">
+        {% for i in products|sort(attribute='name') %}
+            <article class="products_display">
+                <h2 class="product_name">{{ i['name'] }}</h2>
+                <p class="product_description">Description: {{ i['description'] }}</p>
+                <p class="product_price">Price: {{ i['price'] }} {{ i['currency'] }}</p>
+                <p class="product_stock">Stock: {{ i['stock'] }}</p>
+                <p class="product_category">Category: {{ i['category'] }}</p>
+                <p class="product_brand">Brand: {{ i['brand'] }}</p>
+                <div class="product_attributes">
+                    <p>Attributes:</p>
+                    <ul>
+                        {% for attr in attributes_dict[i['product_id']] %}
+                            <li>{{ attr }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="button_fav" data-product-id="{{ i["product_id"] }}">Remove from Cart</button>
+            </article>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <h1>Master Market</h1>
+    </footer>
+</body>
+</html>

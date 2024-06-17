@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Market</title>
+    <link rel="icon" href="../static/images/ai.png" type="img">
+    <link rel="stylesheet" href="../static/product_control.css">
+    <link rel="stylesheet" href="../static/display_product.css">
+    <script src="../static/search.js" defer></script>
+    <script src="../static/star_button.js" defer></script>
+    <script src="../static/hide_or_show.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <button>
+                    <img src="../static/images/ai.png" type="logo">
+                </button>
+            </a>
+        </div>
+        <div class="some_button">
+            <a href="/home">Home</a>
+            <a href="/product_manager">Products Manager</a>
+            <a href="/shopping_cart">Shopping cart</a>
+            <a type="logout" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <div class="profile">
+            <a href="/profile/{{ current_user.username }}">
+                <img src="../static/images/past.gif">
+            </a>
+        </div>
+    </header>
+
+    <section class="some_buttons">
+        <button onclick="showsection('addproducts')">Add Product</button>
+        <button onclick="showsection('editproducts')">Edit Product</button>
+        <button onclick="showsection('delproduct')">Delete Product</button>
+    </section>
+
+    <section id="addproducts" class="section addproducts" method="POST">
+        <h2>Add Product</h2>
+        <form id="add_product">
+            <input type="text" id="name" name="name" placeholder="Name product" required>
+            <input type="text" id="description" name="description" placeholder="Description" required>
+            <input type="number" id="price" name="price" placeholder="Price" required>
+            <input type="text" id="currency" name="currency" placeholder="Currency" required>
+            <input type="number" id="stock" name="stock" placeholder="Stock" required>
+            <input type="text" id="category" name="category" placeholder="Category" required>
+            <input type="text" id="brand" name="brand" placeholder="Brand" required>
+            <input type="text" id="attributes" name="attributes" placeholder="Attributes" required>
+            <input type="submit" value="add product">
+        </form>
+        <p id="error" style="display:none;"></p>
+        <p id="success" style="display:none;"></p>
+    </section>
+
+    <section id="editproducts" class="section editproducts" method="POST">
+        <h2>Edit Product</h2>
+        {% for i in products|sort(attribute='name') %}
+            <div>
+                <article class="products_display">
+                    <h2 class="product_name">{{ i['name'] }}</h2>
+                    <p class="product_description">Description: {{ i['description'] }}</p>
+                    <p class="product_price">Price: {{ i['price'] }}</p>
+                    <p class="product_currency">Currency: {{ i['currency'] }}</p>
+                    <p class="product_stock">Stock: {{ i['stock'] }}</p>
+                    <p class="product_category">Category: {{ i['category'] }}</p>
+                    <p class="product_brand">Brand: {{ i['brand'] }}</p>
+                    <div class="product_attributes">
+                        <p>Attributes:</p>
+                        <ul>
+                            {% for attr in attributes_dict[i['product_id']] %}
+                                <li>{{ attr }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </article>
+                <article class="information">
+                    <form id="edit_product">
+                        <input type="hidden" id="product_id" name="product_id" value="{{ i['product_id'] }}">
+                        <input type="text" id="edit_name" name="name" placeholder="{{ i['name'] }}">
+                        <input type="text" id="edit_description" name="description" placeholder="{{ i['description'] }}">
+                        <input type="number" id="edit_price" name="price" placeholder="{{ i['price'] }}">
+                        <input type="text" id="edit_currency" name="currency" placeholder="{{ i['currency'] }}">
+                        <input type="number" id="edit_stock" name="stock" placeholder="{{ i['stock'] }}">
+                        <input type="text" id="edit_category" name="category" placeholder="{{ i['category'] }}">
+                        <input type="text" id="edit_brand" name="brand" placeholder="{{ i['brand'] }}">
+                        <input type="text" id="edit_attributes" name="attributes" placeholder="{{ attributes_dict[i['product_id']][0] }}">
+                        <input type="submit" value="Save Changes">
+                    </form>
+                    <p id="error" style="display:none;"></p>
+                    <p id="success" style="display:none;"></p>
+                </article>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section id="delproduct" class="section delproduct" method="POST">
+        <h2>Delete Product</h2>
+        {% for i in products|sort(attribute='name') %}
+            <div>
+                <article class="products_display">
+                    <h2 class="product_name">{{ i['name'] }}</h2>
+                    <p class="product_description">Description: {{ i['description'] }}</p>
+                    <p class="product_price">Price: {{ i['price'] }}</p>
+                    <p class="product_currency">Currency: {{ i['currency'] }}</p>
+                    <p class="product_stock">Stock: {{ i['stock'] }}</p>
+                    <p class="product_category">Category: {{ i['category'] }}</p>
+                    <p class="product_brand">Brand: {{ i['brand'] }}</p>
+                    <div class="product_attributes">
+                        <p>Attributes:</p>
+                        <ul>
+                            {% for attr in attributes_dict[i['product_id']] %}
+                                <li>{{ attr }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <form id="edit_product">
+                        <input type="hidden" id="product_id" name="product_id" value="{{ i['product_id'] }}">
+                        <input type="submit" value="Delete">
+                    </form>
+                    <p id="error" style="display:none;"></p>
+                    <p id="success" style="display:none;"></p>
+                </article>
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <h1>Master Market</h1>
+    </footer>
+</body>
+</html>

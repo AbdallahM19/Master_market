@@ -158,7 +158,7 @@ class cart_store_functions:
                 for product_id in user["cart"]:
                     product_price = self.get_product_price(product_id)
                     if product_price is not None:
-                        total_price += product_price
+                        total_price += float(product_price)
                 print(
                     "Total price of products in the cart: ${:.2f}".format(
                         total_price

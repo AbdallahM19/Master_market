@@ -31,6 +31,9 @@ class users_functions:
             "fullname": fullname,
             "email": email,
             "password": password,
+            "image": [],
+            "products_added": [],
+            "favorite": [],
             "cart": []
         }
         try:

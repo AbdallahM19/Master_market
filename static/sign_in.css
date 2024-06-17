@@ -6,39 +6,35 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
     width: center;
 }
 
 .login-container {
     width: 350px;
+    height: auto;
     padding: 16px;
     background-color: white;
     margin: auto;
     border-radius: 5px;
 }
 
-.login-container h2 {
+.login-container h2, h5 {
     text-align: center;
     margin: 20px 0 20px 0px;
-}
-
-.centered_gif {
-    display: block;
-    margin: auto auto 30px auto;
-    width: 250px;
-    height: auto;
 }
 
 label[for="email"],
 label[for="password"],
 label[for="username"],
-label[for="fullname"] {
+label[for="fullname"],
+label[for="image"] {
     font-weight: bold;
 }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text],
+input[type=password],
+input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -56,6 +52,33 @@ input[type=submit] {
     width: 100%;
 }
 
-input[type=submit]:hover {
+.login-container a {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover,
+.login-container a:hover {
     opacity: 0.8;
+}
+
+.login-container .file_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+input[type=file] {
+    margin: 0;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #000000;
+    border: 5px solid #000000;
 }

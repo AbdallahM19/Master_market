@@ -197,6 +197,7 @@ def convert_from_json_to_mysql():
 
         # create database if not found.
         try:
+            root_cursor.execute("DROP DATABASE master_market_db")
             root_cursor.execute(
                 "CREATE DATABASE IF NOT EXISTS master_market_db"
             )
@@ -232,9 +233,9 @@ GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS products (
             product_id VARCHAR(255) PRIMARY KEY,
-            name VARCHAR(255),
+            name VARCHAR(255) NOT NULL,
             description TEXT,
-            price DECIMAL(10, 2),
+            price DECIMAL(10, 2) NOT NULL,
             currency VARCHAR(10),
             stock INT,
             category VARCHAR(255),
@@ -248,10 +249,13 @@ GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             user_id VARCHAR(255) PRIMARY KEY,
-            username VARCHAR(255),
-            fullname VARCHAR(255),
-            email VARCHAR(255),
-            password VARCHAR(255),
+            username VARCHAR(255) UNIQUE NOT NULL,
+            fullname VARCHAR(255) NOT NULL,
+            email VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            image TEXT,
+            products_added TEXT,
+            favorite TEXT,
             cart TEXT
         )
         """)
@@ -311,14 +315,20 @@ GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
                         fullname,
                         email,
                         password,
+                        image,
+                        products_added,
+                        favorite,
                         cart
                     )
-                VALUES (%s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON DUPLICATE KEY UPDATE
                     username=VALUES(username),
                     fullname=VALUES(fullname),
                     email=VALUES(email),
                     password=VALUES(password),
+                    image=VALUES(image),
+                    products_added=VALUES(products_added),
+                    favorite=VALUES(favorite),
                     cart=VALUES(cart)
                 """, (
                     user["user_id"],
@@ -326,7 +336,10 @@ GRANT ALL PRIVILEGES ON master_market_db.* TO 'master_user'@'localhost';
                     user["fullname"],
                     user["email"],
                     user["password"],
-                    ", ".join(user["cart"]) if user["cart"] else None
+                    ', '.join(user["image"]) if user["image"] else "",
+                    ', '.join(user["products_added"]) if user["products_added"] else "",
+                    ', '.join(user["favorite"]) if user["favorite"] else "",
+                    ', '.join(user["cart"]) if user["cart"] else ""
                 ))
             except mysql.connector.Error as err:
                 print("Error inserting user {}: {}".format(
@@ -409,6 +422,15 @@ def convert_from_mysql_to_json():
         for user in users_data:
             user["cart"] = user["cart"].split(", ")\
                 if user["cart"] else []
+        for user in users_data:
+            user["image"] = user["image"].split(", ")\
+                if user["image"] else []
+        for user in users_data:
+            user["favorite"] = user["favorite"].split(", ")\
+                if user["favorite"] else []
+        for user in users_data:
+            user["products_added"] = user["products_added"].split(", ")\
+                if user["products_added"] else []
 
         # Write users data to JSON file
         with open("users_after.json", "w") as user_file:

@@ -14,7 +14,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = '/mastermarket/home';
+            window.location.href = '/home';
         } else {
             document.getElementById('error').textContent = data.message;
         }

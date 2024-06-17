@@ -1,0 +1,24 @@
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    height: 100px;
+    width: 70px;
+    background: linear-gradient(to right bottom, #084656, #2c869c, #1ba0c2);
+    border-radius: 3px;
+    position: absolute;
+    float: left;
+}
+
+header .logo button {
+    border: none;
+    background: none;
+    height: 100px;
+    width: 70px;
+}
+
+header .logo img {
+    position: relative;
+    height: 44px;
+}

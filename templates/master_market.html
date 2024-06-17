@@ -11,139 +11,55 @@
     <header>
         <div class="logo">
             <img src="../static/images/ai.png" type="logo">
+            Master Market
         </div>
-        <div  class="profile">
-            <img src="../static/images/past.gif"
-        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <section>
-        <div class="search_box">
-            <input type="text" id="searchInput" placeholder="Search">
-            <button class="button_search">
-                <img src="../static/images/search_icon.png" alt="search button">
-            </button>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shopping Online</h1>
+            <p>Welcome to Master Market, your ultimate destination for online shopping.</p>
+            <p>Our platform provides a seamless and dynamic shopping experience, allowing users to browse, buy, and save products with ease.</p>
+            <p>From the moment you log in or register, you can explore a wide range of products, each with detailed descriptions and images.</p>
+            <p>We've designed a personalized page for each product and a favorites section for your convenience.</p>
+            <p>Enjoy the benefits of a user-friendly interface, secure transactions, and a vast selection of items, all tailored to meet your needs.</p>
+            <a href="/landing_page" class="button">Read More</a>
+            <div class="button_group">
+                <a href="/register">
+                    <button>Register</button>
+                </a>
+                <a href="/login">
+                    <button>Log in</button>
+                </a>
+            </div>
         </div>
-        <div class="some_products">
-            <h1>Trending</h1>
+        <div class="hero-image">
+            <img src="../static/images/ai.png" alt="Shopping Cart">
         </div>
-    </section>
-    <section class="information">
-        <article class="products_display">
-            <h2 class="product_name">Laptop</h2>
-            <div class="product_images">
-                <img src="../static/images/laptop.png" alt="laptop photo">
-            </div>
-            <p class="product_description">Description: A laptop computer</p>
-            <p class="product_price">Price: $1056.32 USD</p>
-            <p class="product_stock">Stock: 6</p>
-            <p class="product_category">Category: Electronics</p>
-            <p class="product_brand">Brand: BrandZ</p>
-            <div class="product_attributes">
-                <p>Attributes:</p>
-                    <ul>
-                        <li>Color: Black</li>
-                        <li>Size: 15 inch</li>
-                    </ul>
-            </div>
-            <button class="buy">Buy</button>
-            <button class="save">Save</button>
-            <button class="favorite" onclick="toggleFavorite(this)">
-                <img src="../static/images/star.png" alt="Favorite">
-            </button>
-        </article>
-        <article class="products_display">
-            <h2 class="product_name">PC</h2>
-            <div class="product_images">
-                <img src="../static/images/interface.gif" alt="laptop photo">
-            </div>
-            <p class="product_description">Description: A PC</p>
-            <p class="product_price">Price: $899.99 USD</p>
-            <p class="product_stock">Stock: 15</p>
-            <p class="product_category">Category: Electronics</p>
-            <p class="product_brand">Brand: BrandZ</p>
-            <div class="product_attributes">
-                <p>Attributes:</p>
-                    <ul>
-                        <li>Color: white</li>
-                        <li>Size: 15 inch</li>
-                    </ul>
-            </div>
-            <button class="buy">Buy</button>
-            <button class="save">Save</button>
-            <button class="favorite" onclick="toggleFavorite(this)">
-                <img src="../static/images/star.png" alt="Favorite">
-            </button>
-        </article>
-        <article class="products_display">
-            <h2 class="product_name">Video</h2>
-            <div class="product_images">
-                <img src="../static/images/video.gif" alt="laptop photo">
-            </div>
-            <p class="product_description">Description: film X-Men and Login</p>
-            <p class="product_price">Price: $20.0 USD</p>
-            <p class="product_stock">Stock: 67</p>
-            <p class="product_category">Category: Film</p>
-            <p class="product_brand">Brand: Video</p>
-            <div class="product_attributes">
-                <p>Attributes:</p>
-                    <ul>
-                        <li>Size: Full Size</li>
-                    </ul>
-            </div>
-            <button class="buy">Buy</button>
-            <button class="save">Save</button>
-            <button class="favorite" onclick="toggleFavorite(this)">
-                <img src="../static/images/star.png" alt="Favorite">
-            </button>
-        </article>
-        <article class="products_display">
-            <h2 class="product_name">T-Shirt</h2>
-            <div class="product_images">
-                <img src="../static/images/tshirt.gif" alt="laptop photo">
-            </div>
-            <p class="product_description">Description: Casual cotton t-shirt</p>
-            <p class="product_price">Price: $19.99 USD</p>
-            <p class="product_stock">Stock: 50</p>
-            <p class="product_category">Category: Apparel</p>
-            <p class="product_brand">Brand: XYZ</p>
-            <div class="product_attributes">
-                <p>Attributes:</p>
-                    <ul>
-                        <li>Color: white</li>
-                        <li>Size: medium</li>
-                    </ul>
-            </div>
-            <button class="buy">Buy</button>
-            <button class="save">Save</button>
-            <button class="favorite" onclick="toggleFavorite(this)">
-                <img src="../static/images/star.png" alt="Favorite">
-            </button>
-        </article>
-        <article class="products_display">
-            <h2 class="product_name">Glasses</h2>
-            <div class="product_images">
-                <img src="../static/images/party-glasses.gif" alt="laptop photo">
-            </div>
-            <p class="product_description">Description: party glasses</p>
-            <p class="product_price">Price: $132.89 USD</p>
-            <p class="product_stock">Stock: 21</p>
-            <p class="product_category">Category: T-shirts</p>
-            <p class="product_brand">Brand: Golden Goose Style</p>
-            <div class="product_attributes">
-                <p>Attributes:</p>
-                    <ul>
-                        <li>Color: Black and blue</li>
-                    </ul>
-            </div>
-            <button class="buy">Buy</button>
-            <button class="save">Save</button>
-            <button class="favorite" onclick="toggleFavorite(this)">
-                <img src="../static/images/star.png" alt="Favorite">
-            </button>
-        </article>
     </section>
     <footer>
-        <h1>Master Market</h1>
+        <div class="social-links">
+            <a class="empty"></a>
+            <a class="facebook" href="https://www.facebook.com/">
+                <img src="../static/images/2023_Facebook_icon.svg.png" alt="Your Image Description">
+            </a>
+            <a class="youtube" href="https://www.youtube.com/">
+                <img src="../static/images/youtube (2).png" alt="Your Image Description">
+            </a>
+            <a class="twitter" href="https://x.com/home">
+                <img src="../static/images/twitter.png" alt="Your Image Description">
+            </a>
+            <a class="twitter" href="https://www.instagram.com/">
+                <img src="../static/images/instagram.png" alt="Your Image Description">
+            </a>
+        </div>
     </footer>
 </body>
 </html>
